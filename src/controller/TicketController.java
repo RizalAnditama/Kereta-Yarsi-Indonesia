@@ -16,6 +16,18 @@ import model.Ticket;
  * Controller class for handling operations related to tickets. Implements the
  * TicketDAO interface to provide data access methods for tickets.
  *
+ * This class uses the singleton pattern to ensure that only one instance of the
+ * controller exists.
+ *
+ * <p>
+ * Example usage:
+ * </p>
+ * 
+ * <pre>
+ * TicketController controller = TicketController.getInstance();
+ * boolean isCreateTicketSuccessful = controller.createTicket(ticket);
+ * </pre>
+ *
  * @see model.TicketDAO
  * @see model.Ticket
  * @see model.DatabaseConnector

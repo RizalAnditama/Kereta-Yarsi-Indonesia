@@ -21,6 +21,18 @@ import model.PassengerDAO;
  * singleton pattern to ensure only one instance of the controller is created.
  * It extends the Controller class and implements the PassengerDAO interface.
  *
+ * This class uses the singleton pattern to ensure that only one instance of the
+ * controller exists.
+ *
+ * <p>
+ * Example usage:
+ * </p>
+ * 
+ * <pre>
+ * PassengerController controller = PassengerController.getInstance();
+ * int lastInsertedId = controller.createPassenger(passenger);
+ * </pre>
+ *
  * @see model.Passenger
  * @see model.PassengerDAO
  * @see model.DatabaseConnector

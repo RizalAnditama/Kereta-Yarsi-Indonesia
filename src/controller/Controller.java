@@ -41,12 +41,22 @@ import model.Train;
 
 /**
  * Controller class handles various operations related to the database and
- * application logic.
- * It includes methods for database connection, encryption, and user session
- * management.
- * This class follows a singleton design pattern to ensure only one instance
- * exists.
+ * application logic. It includes methods for database connection, encryption,
+ * and user session management. This class follows a singleton design pattern to
+ * ensure only one instance exists.
+ *
+ * This class uses the singleton pattern to ensure that only one instance of the
+ * controller exists.
+ *
+ * <p>
+ * Example usage:
+ * </p>
  * 
+ * <pre>
+ * Controller controller = Controller.getInstance();
+ * int userCount = controller.getRowCount("user");
+ * </pre>
+ *
  * @version 1.0
  * @author Muhammad Rizal Anditama Nugraha
  */
@@ -71,7 +81,7 @@ public class Controller {
 
     /**
      * Constructor for Controller. It initializes the DatabaseConnector.
-     * 
+     *
      * @param databaseConnector the DatabaseConnector instance to use
      */
     protected Controller(DatabaseConnector databaseConnector) {
@@ -81,7 +91,7 @@ public class Controller {
 
     /**
      * Returns the singleton instance of the Controller.
-     * 
+     *
      * @return the singleton instance
      */
     public static synchronized Controller getInstance() {
@@ -93,7 +103,7 @@ public class Controller {
 
     /**
      * Returns the singleton instance of the Session.
-     * 
+     *
      * @return the singleton session instance
      */
     public static synchronized Session getSession() {
@@ -102,7 +112,7 @@ public class Controller {
 
     /**
      * Generates a random salt for password hashing.
-     * 
+     *
      * @param saltIteration the length of the salt in bytes
      * @return the generated salt
      */
@@ -115,7 +125,7 @@ public class Controller {
 
     /**
      * Encrypts a password using PBKDF2 with HMAC SHA-256.
-     * 
+     *
      * @param password the password to encrypt
      * @param salt     the salt to use in the encryption
      * @return the encrypted password
@@ -142,7 +152,7 @@ public class Controller {
 
     /**
      * Verifies if the input password matches the stored password.
-     * 
+     *
      * @param inputPassword  the password to verify
      * @param storedPassword the stored hashed password
      * @param salt           the salt used in hashing
@@ -165,7 +175,7 @@ public class Controller {
 
     /**
      * Sets the initial train information for a session.
-     * 
+     *
      * @param stasiunAsal   the starting station
      * @param stasiunAkhir  the ending station
      * @param tanggalPergi  the departure date
@@ -184,7 +194,7 @@ public class Controller {
 
     /**
      * Counts the number of trains matching the specified criteria.
-     * 
+     *
      * @param stasiunAwal  the starting station
      * @param stasiunAkhir the ending station
      * @param tanggal      the date of departure
@@ -208,7 +218,7 @@ public class Controller {
 
     /**
      * Finds specific trains matching the criteria.
-     * 
+     *
      * @param stasiunAwal  the starting station
      * @param stasiunAkhir the ending station
      * @param tanggal      the date of departure
@@ -231,7 +241,7 @@ public class Controller {
 
     /**
      * Builds a DefaultTableModel from a ResultSet.
-     * 
+     *
      * @param rs the ResultSet to process
      * @return a DefaultTableModel containing the data from the ResultSet
      * @throws SQLException if a database access error occurs
@@ -264,7 +274,7 @@ public class Controller {
 
     /**
      * Finds all records from a specified table.
-     * 
+     *
      * @param table the table to query
      * @return a ResultSet containing all records from the table
      */
@@ -274,7 +284,7 @@ public class Controller {
 
     /**
      * Finds records from a table where a specific column matches a keyword.
-     * 
+     *
      * @param table      the table to query
      * @param columnName the column to search
      * @param keyword    the keyword to match
@@ -286,7 +296,7 @@ public class Controller {
 
     /**
      * Executes a specified SQL query.
-     * 
+     *
      * @param execute the SQL query to execute
      * @return a ResultSet containing the results of the query
      */
@@ -303,7 +313,7 @@ public class Controller {
 
     /**
      * Inserts a new record into a specified table.
-     * 
+     *
      * @param table  the table to insert into
      * @param withID whether to include an ID column
      * @param value  the values to insert
@@ -365,7 +375,7 @@ public class Controller {
 
     /**
      * Displays an error message dialog.
-     * 
+     *
      * @param title   the title of the dialog
      * @param message the message to display
      * @throws HeadlessException if an error occurs
@@ -376,7 +386,7 @@ public class Controller {
 
     /**
      * Displays a warning message dialog.
-     * 
+     *
      * @param message the message to display
      * @throws HeadlessException if an error occurs
      */
@@ -386,7 +396,7 @@ public class Controller {
 
     /**
      * Displays an informational message dialog.
-     * 
+     *
      * @param message the message to display
      * @throws HeadlessException if an error occurs
      */
@@ -396,7 +406,7 @@ public class Controller {
 
     /**
      * Retrieves the column names of a specified table.
-     * 
+     *
      * @param table the table to query
      * @return an array of column names
      */
@@ -417,7 +427,7 @@ public class Controller {
 
     /**
      * Retrieves the column count of a specified table.
-     * 
+     *
      * @param table the table to query
      * @return the number of columns
      */
@@ -436,7 +446,7 @@ public class Controller {
 
     /**
      * Retrieves the row count of a specified table.
-     * 
+     *
      * @param table the table to query
      * @return the number of rows
      */
@@ -453,7 +463,7 @@ public class Controller {
 
     /**
      * Checks if a specified database exists.
-     * 
+     *
      * @param database the database to check
      * @return true if the database exists, false otherwise
      * @throws SQLException if a database access error occurs
@@ -468,7 +478,7 @@ public class Controller {
     /**
      * Retrieves the row count of a specified table where a column matches a
      * keyword.
-     * 
+     *
      * @param table      the table to query
      * @param columnName the column to search
      * @param keyword    the keyword to match
@@ -488,7 +498,7 @@ public class Controller {
 
     /**
      * Checks if a string contains any whitespace characters.
-     * 
+     *
      * @param str the string to check
      * @return true if the string contains whitespace, false otherwise
      */
@@ -500,7 +510,7 @@ public class Controller {
 
     /**
      * Checks if a string contains any special characters.
-     * 
+     *
      * @param str the string to check
      * @return true if the string contains special characters, false otherwise
      */
@@ -512,7 +522,7 @@ public class Controller {
 
     /**
      * Checks if a string contains any uppercase characters.
-     * 
+     *
      * @param str the string to check
      * @return true if the string contains uppercase characters, false otherwise
      */
@@ -524,7 +534,7 @@ public class Controller {
 
     /**
      * Generates a random key of a specified length.
-     * 
+     *
      * @param keyLength the length of the key in bytes
      * @return the generated key
      */
@@ -537,7 +547,7 @@ public class Controller {
 
     /**
      * Hashes a password using PBKDF2 with HMAC SHA-1.
-     * 
+     *
      * @param str the password to hash
      * @return the hashed password
      */
@@ -564,7 +574,7 @@ public class Controller {
 
     /**
      * Retrieves the current Statement.
-     * 
+     *
      * @return the current Statement
      */
     public static Statement getSt() {
@@ -573,7 +583,7 @@ public class Controller {
 
     /**
      * Sets the current Statement.
-     * 
+     *
      * @param aSt the Statement to set
      */
     public static void setSt(Statement aSt) {
@@ -582,7 +592,7 @@ public class Controller {
 
     /**
      * Retrieves the current ResultSet.
-     * 
+     *
      * @return the current ResultSet
      */
     public static ResultSet getRs() {
@@ -591,7 +601,7 @@ public class Controller {
 
     /**
      * Sets the current ResultSet.
-     * 
+     *
      * @param aRs the ResultSet to set
      */
     public static void setRs(ResultSet aRs) {
@@ -600,7 +610,7 @@ public class Controller {
 
     /**
      * Retrieves the current PreparedStatement.
-     * 
+     *
      * @return the current PreparedStatement
      */
     public static PreparedStatement getPs() {
@@ -609,7 +619,7 @@ public class Controller {
 
     /**
      * Sets the current PreparedStatement.
-     * 
+     *
      * @param aPs the PreparedStatement to set
      */
     public static void setPs(PreparedStatement aPs) {

@@ -33,8 +33,44 @@ import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 
 /**
+ * Manages the connection and operations with the MySQL database.
+ * <p>
+ * This class provides methods to interact with the database, such as executing
+ * queries, inserting data,
+ * hashing passwords, and managing database connections.
+ * </p>
  *
- * @author Muhammad Rizal Anditama Nugraha
+ * @version 1.0
+ * @since 2024-06-23
+ * 
+ * @see Passenger
+ * @see User
+ * @see DefaultTableModel
+ * @see SecretKeyFactory
+ * @see PreparedStatement
+ * @see ResultSet
+ * @see SQLException
+ * @see SecureRandom
+ * @see PBEKeySpec
+ * @see NoSuchAlgorithmException
+ * @see InvalidKeySpecException
+ * @see KeySpec
+ * @see Logger
+ * @see Level
+ * @see DriverManager
+ * @see Connection
+ * @see Statement
+ * @see ResultSetMetaData
+ * @see Pattern
+ * @see Matcher
+ * @see JOptionPane
+ * @see Charset
+ * @see HeadlessException
+ * @see Date
+ * @see Timestamp
+ * @see Vector
+ * @see Base64
+ * @see Base64.Encoder
  */
 public class DatabaseConnector {
 
@@ -55,10 +91,6 @@ public class DatabaseConnector {
     protected static final int ITERATION_COUNT = 65536;
     protected static final int KEY_LENGTH = 256;
 
-//    private int userId = -1;
-//    private String username = null;
-//    private boolean auth = false;
-//    private String role = "member";
     private User user;
 
     private String stasiunAsal;
@@ -82,6 +114,14 @@ public class DatabaseConnector {
     private double subtotalHarga;
     private double totalHarga;
 
+    /**
+     * Constructs a DatabaseConnector object and initializes the database
+     * connection.
+     * <p>
+     * It also registers the MySQL JDBC driver and attempts to establish a
+     * connection to the specified database.
+     * </p>
+     */
     public DatabaseConnector() {
         try {
             Class.forName(DRIVER);
@@ -96,10 +136,20 @@ public class DatabaseConnector {
         }
     }
 
+    /**
+     * Returns the current database connection instance.
+     *
+     * @return the Connection object representing the database connection
+     */
     public static Connection getConnect() {
         return con;
     }
 
+    /**
+     * Returns the singleton instance of the DatabaseConnector class.
+     *
+     * @return the singleton instance of DatabaseConnector
+     */
     public static DatabaseConnector getInstance() {
         if (instance == null) {
             instance = new DatabaseConnector();
@@ -107,53 +157,12 @@ public class DatabaseConnector {
         return instance;
     }
 
-//    public boolean register(String username, String password) {
-//        SecureRandom random = new SecureRandom();
-//        if (getRowCountWhere("userDB", "username", username) > 0) {
-//            infoMessage("Username is used. Try others!");
-//            return false;
-//        }
-//
-//        int saltValue = random.nextInt(100);
-//        byte[] salt = generateSalt(saltValue);
-//        String saltString = new String(salt, Charset.forName("UTF-8"));
-//
-//        String query = "INSERT INTO userDB (user_id, username, password, salt) VALUES (null, ?, ?, ?)";
-//        try {
-//            setPs(con.prepareStatement(query));
-//            getPs().setString(1, username);
-//            getPs().setString(2, encryptPBKDF2(password, salt));
-//            getPs().setBytes(3, salt);
-//            response = getPs().executeUpdate() > 0;
-//        } catch (SQLException ex) {
-//            Logger.getLogger(DatabaseConnector.class.getName()).log(Level.SEVERE, null, ex);
-//            errorMessage("Registrasi gagal", "Ada gangguan registrasi, mohon coba lagi nanti");
-//        }
-//        return response;
-//    }
-//
-//    public boolean login(String username, String password) {
-//        if (getRowCountWhere("userDB", "username", username) < 1) {
-//            infoMessage("Username not found!");
-//            return false;
-//        } else if (!verifyPassword(password, username)) {
-//            infoMessage("Wrong password!");
-//            return false;
-//        }
-//        setRs(findWhere("userDB", "username", username));
-//        try {
-//            getRs().next();
-//            setUserId(getRs().getInt("user_id"));
-////            setRole(rs.getString("role"));
-//            setAuth(true);
-//            setUsername(username);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(DatabaseConnector.class.getName()).log(Level.SEVERE, null, ex);
-//            errorMessage("Login error", "There's a problem when logging in, try again later!");
-//        }
-//
-//        return this.isAuth();
-//    }
+    /**
+     * Generates a salt of specified length using a secure random number generator.
+     *
+     * @param saltIteration the length of the salt to generate
+     * @return a byte array representing the generated salt
+     */
     public static byte[] generateSalt(int saltIteration) {
         SecureRandom random = new SecureRandom();
         byte[] salt = new byte[saltIteration];
@@ -161,6 +170,14 @@ public class DatabaseConnector {
         return salt;
     }
 
+    /**
+     * Encrypts the given password using PBKDF2 algorithm with HMAC SHA-256.
+     *
+     * @param password the password to encrypt
+     * @param salt     the salt used in encryption
+     * @return a string containing the base64 encoded salt and hash separated by a
+     *         delimiter
+     */
     public static String encryptPBKDF2(String password, byte[] salt) {
         PBEKeySpec spec = new PBEKeySpec(password.toCharArray(), salt, ITERATION_COUNT, KEY_LENGTH);
         SecretKeyFactory factory = null;
@@ -181,6 +198,16 @@ public class DatabaseConnector {
         return saltBase64 + DELIMITER + hashBase64;
     }
 
+    /**
+     * Verifies the given password against the stored password hash using PBKDF2
+     * algorithm with HMAC SHA-256.
+     *
+     * @param inputPassword  the password to verify
+     * @param storedPassword the stored password hash and salt
+     * @param salt           the salt used in the stored password hash
+     * @return true if the input password matches the stored password, false
+     *         otherwise
+     */
     public static boolean verifyPassword(String inputPassword, String storedPassword, byte[] salt) {
         String newHash = null;
         String storedHash = storedPassword.split(DELIMITER)[1];
@@ -196,17 +223,19 @@ public class DatabaseConnector {
         return false;
     }
 
-//    public void setFirstStuff(String stasiunAsal, String stasiunAkhir, Date tanggalPergi, Date tanggalPulang) {
-//        setStasiunAsal(stasiunAsal);
-//        setStasiunAkhir(stasiunAkhir);
-//        setTanggalPergi(tanggalPergi);
-//        setTanggalPulang(tanggalPulang);
-//        setPenumpangTotal(penumpangAnakAnak + penumpangDewasa);
-//    }
-
+    /**
+     * Counts the number of trains available between the specified stations and
+     * date.
+     *
+     * @param stasiunAwal  the starting station
+     * @param stasiunAkhir the ending station
+     * @param tanggal      the departure date
+     * @return the number of trains available
+     */
     public int countFoundTrain(String stasiunAwal, String stasiunAkhir, Date tanggal) {
         try {
-            ps = con.prepareStatement("SELECT COUNT(*) as count FROM train WHERE starting_station = ? AND ending_station = ? AND departing_time > ?");
+            ps = con.prepareStatement(
+                    "SELECT COUNT(*) as count FROM train WHERE starting_station = ? AND ending_station = ? AND departing_time > ?");
             ps.setString(1, stasiunAwal);
             ps.setString(2, stasiunAkhir);
             ps.setTimestamp(3, new Timestamp(tanggal.getTime()));
@@ -219,13 +248,21 @@ public class DatabaseConnector {
         return 0;
     }
 
+    /**
+     * Retrieves all trains between the specified stations and date.
+     *
+     * @param stasiunAwal  the starting station
+     * @param stasiunAkhir the ending station
+     * @param tanggal      the departure date
+     * @return a ResultSet containing all matching train records
+     */
     public ResultSet findSpecificTrain(String stasiunAwal, String stasiunAkhir, Date tanggal) {
         try {
-            ps = con.prepareStatement("SELECT * FROM train WHERE starting_station = ? AND ending_station = ? AND departing_time > ? ORDER BY departing_time ASC");
+            ps = con.prepareStatement(
+                    "SELECT * FROM train WHERE starting_station = ? AND ending_station = ? AND departing_time > ? ORDER BY departing_time ASC");
             ps.setString(1, stasiunAwal);
             ps.setString(2, stasiunAkhir);
             ps.setTimestamp(3, new Timestamp(tanggal.getTime()));
-            System.out.println(ps.toString());
             return ps.executeQuery();
         } catch (SQLException ex) {
             Logger.getLogger(DatabaseConnector.class.getName()).log(Level.SEVERE, null, ex);
@@ -233,6 +270,13 @@ public class DatabaseConnector {
         return null;
     }
 
+    /**
+     * Constructs a DefaultTableModel based on the provided ResultSet.
+     *
+     * @param rs the ResultSet containing the data
+     * @return a DefaultTableModel representing the ResultSet data
+     * @throws SQLException if a database access error occurs
+     */
     public static DefaultTableModel buildTableModel(ResultSet rs)
             throws SQLException {
 
@@ -256,17 +300,37 @@ public class DatabaseConnector {
         }
 
         return new DefaultTableModel(data, columnNames);
-
     }
 
+    /**
+     * Executes a query to retrieve all records from a specified table.
+     * 
+     * @param table The name of the table to query.
+     * @return A ResultSet object containing the results of the query.
+     */
     public ResultSet findAll(String table) {
         return executeQuery("SELECT * FROM " + table);
     }
 
+    /**
+     * Executes a query to retrieve records from a specified table where a specific
+     * column matches a keyword.
+     * 
+     * @param table      The name of the table to query.
+     * @param columnName The name of the column to match.
+     * @param keyword    The keyword to match against the column.
+     * @return A ResultSet object containing the results of the query.
+     */
     public ResultSet findWhere(String table, String columnName, String keyword) {
         return executeQuery("SELECT * FROM " + table + " WHERE " + columnName + " = '" + keyword + "'");
     }
 
+    /**
+     * Executes a SQL query and returns the result as a ResultSet.
+     * 
+     * @param execute The SQL query to execute.
+     * @return A ResultSet object containing the results of the query.
+     */
     public ResultSet executeQuery(String execute) {
         try {
             setSt(con.createStatement());
@@ -278,68 +342,101 @@ public class DatabaseConnector {
         return getRs();
     }
 
+    /**
+     * Inserts a new record into a specified table.
+     * 
+     * @param table  The name of the table to insert into.
+     * @param withID Indicates whether to include an ID column in the insert.
+     * @param value  The values to insert into the table.
+     * @return true if the insertion was successful, false otherwise.
+     */
     public boolean insert(String table, boolean withID, String... value) {
         String[] columnName = getColumnName(table);
         if (columnName.length < 1) {
             return false;
         }
 
-        for (String string : columnName) {
-            System.out.print(string + ", ");
-        }
-
-        String query = "INSERT INTO " + table + " (";
+        // Building the query
+        StringBuilder query = new StringBuilder("INSERT INTO " + table + " (");
         int a = 1;
         for (String row : columnName) {
-            query += row;
+            query.append(row);
             a++;
             if (a - 1 < getColumnCount(table)) {
-                query += ", ";
+                query.append(", ");
             }
         }
 
         byte minusId = 0;
-
         if (withID) {
-            query += ") VALUES (null, ";
+            query.append(") VALUES (null, ");
             minusId = 1;
         } else {
-            query += ") VALUES (";
+            query.append(") VALUES (");
         }
 
         for (int i = 0; i < getColumnCount(table) - minusId; i++) {
-            query += "?";
+            query.append("?");
             if (i + 1 < getColumnCount(table) - 1) {
-                query += ", ";
+                query.append(", ");
             }
         }
-        query += ")";
+        query.append(")");
+
         try {
-            setPs(con.prepareStatement(query));
+            setPs(con.prepareStatement(query.toString()));
             for (int i = 0; i < value.length; i++) {
                 getPs().setString(i + 1, value[i]);
             }
             response = getPs().executeUpdate() > 0;
         } catch (SQLException ex) {
-            System.err.println(query);
+            System.err.println(query.toString());
             Logger.getLogger(DatabaseConnector.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return response;
     }
 
+    /**
+     * Displays an error message dialog.
+     * 
+     * @param title   The title of the error dialog.
+     * @param message The error message to display.
+     * @throws HeadlessException If the environment does not support graphical
+     *                           displays.
+     */
     public void errorMessage(String title, String message) throws HeadlessException {
         JOptionPane.showMessageDialog(null, message, title, JOptionPane.ERROR_MESSAGE);
     }
 
+    /**
+     * Displays a warning message dialog.
+     * 
+     * @param message The warning message to display.
+     * @throws HeadlessException If the environment does not support graphical
+     *                           displays.
+     */
     public void warningMessage(String message) throws HeadlessException {
         JOptionPane.showMessageDialog(null, message, "Warning Message", JOptionPane.WARNING_MESSAGE);
     }
 
+    /**
+     * Displays an information message dialog.
+     * 
+     * @param message The information message to display.
+     * @throws HeadlessException If the environment does not support graphical
+     *                           displays.
+     */
     public void infoMessage(String message) throws HeadlessException {
         JOptionPane.showMessageDialog(null, message, "Message", JOptionPane.INFORMATION_MESSAGE);
     }
 
+    /**
+     * Retrieves the column names of a specified table.
+     * 
+     * @param table The name of the table.
+     * @return An array of column names in the specified table.
+     */
     public String[] getColumnName(String table) {
         String[] columnName = new String[0];
         try {
@@ -355,6 +452,12 @@ public class DatabaseConnector {
         return columnName;
     }
 
+    /**
+     * Retrieves the number of columns in a specified table.
+     * 
+     * @param table The name of the table.
+     * @return The number of columns in the specified table.
+     */
     public int getColumnCount(String table) {
         int count = 0;
         ResultSetMetaData metaData;
@@ -368,6 +471,12 @@ public class DatabaseConnector {
         return count;
     }
 
+    /**
+     * Retrieves the number of rows in a specified table.
+     * 
+     * @param table The name of the table.
+     * @return The number of rows in the specified table.
+     */
     public int getRowCount(String table) {
         setRs(executeQuery("SELECT COUNT(*) AS rowCount FROM " + table + ""));
         try {
@@ -379,14 +488,32 @@ public class DatabaseConnector {
         return 0;
     }
 
+    /**
+     * Checks if a database with the specified name exists.
+     * 
+     * @param database The name of the database to check.
+     * @return true if the database exists, false otherwise.
+     * @throws SQLException If a database access error occurs.
+     */
     public boolean checkForDatabase(String database) throws SQLException {
-        setRs(executeQuery("SELECT SCHEMA_NAME AS rowCount FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '" + database + "'"));
+        setRs(executeQuery("SELECT SCHEMA_NAME AS rowCount FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '"
+                + database + "'"));
 
         return getRs().next();
     }
 
+    /**
+     * Retrieves the number of rows in a specified table where a column matches a
+     * keyword.
+     * 
+     * @param table      The name of the table.
+     * @param columnName The name of the column to match.
+     * @param keyword    The keyword to match against the column.
+     * @return The number of rows matching the criteria.
+     */
     public int getRowCountWhere(String table, String columnName, String keyword) {
-        setRs(executeQuery("SELECT COUNT(*) AS rowCount FROM " + table + " WHERE " + columnName + " = '" + keyword + "'"));
+        setRs(executeQuery(
+                "SELECT COUNT(*) AS rowCount FROM " + table + " WHERE " + columnName + " = '" + keyword + "'"));
         try {
             getRs().next();
             return getRs().getInt("rowCount");
@@ -396,24 +523,49 @@ public class DatabaseConnector {
         return 0;
     }
 
+    /**
+     * Checks if a string contains any whitespace characters.
+     * 
+     * @param str The string to check.
+     * @return true if the string contains whitespace, false otherwise.
+     */
     public boolean hasWhitespace(String str) {
-        Pattern p = Pattern.compile("\\S");
+        Pattern p = Pattern.compile("\\s");
         Matcher m = p.matcher(str);
         return m.find();
     }
 
+    /**
+     * Checks if a string contains any special characters (characters other than
+     * alphabets and digits).
+     * 
+     * @param str The string to check.
+     * @return true if the string contains special characters, false otherwise.
+     */
     public boolean hasSpecialChar(String str) {
-        Pattern p = Pattern.compile("[^a-z0-9]");
-        Matcher m = p.matcher(str);
-        return !m.find();
-    }
-
-    public boolean hasUpperCase(String str) {
-        Pattern p = Pattern.compile("[^A-Z]");
+        Pattern p = Pattern.compile("[^a-zA-Z0-9]");
         Matcher m = p.matcher(str);
         return m.find();
     }
 
+    /**
+     * Checks if a string contains any uppercase letters.
+     * 
+     * @param str The string to check.
+     * @return true if the string contains uppercase letters, false otherwise.
+     */
+    public boolean hasUpperCase(String str) {
+        Pattern p = Pattern.compile("[A-Z]");
+        Matcher m = p.matcher(str);
+        return m.find();
+    }
+
+    /**
+     * Generates a random byte array of specified length.
+     * 
+     * @param keyLength The length of the byte array to generate.
+     * @return A byte array containing random bytes.
+     */
     public byte[] generateKey(int keyLength) {
         SecureRandom random = new SecureRandom();
         byte[] bytes = new byte[keyLength];
@@ -421,6 +573,14 @@ public class DatabaseConnector {
         return bytes;
     }
 
+    /**
+     * Hashes a password using PBKDF2 with a random salt and returns the hashed
+     * password as a string.
+     * 
+     * @param str The password to hash.
+     * @return A string containing the Base64-encoded salt followed by the
+     *         Base64-encoded hashed password.
+     */
     public String hashPassword(String str) {
         SecureRandom random = new SecureRandom();
         byte[] salt = new byte[16];
@@ -442,15 +602,17 @@ public class DatabaseConnector {
         return enc.encodeToString(salt) + enc.encodeToString(hash);
     }
 
-//    boolean checkPassword(String input, String username) {
-//        ResultSet user = executeQuery("SELECT * FROM user_login WHERE username LIKE '" + username + "'");
-//        try {
-//            return hashPassword(userDB).equals(user.getString("password"));
-//        } catch (SQLException ex) {
-//            Logger.getLogger(DatabaseConnector.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        return false;
-//    }
+    // boolean checkPassword(String input, String username) {
+    // ResultSet user = executeQuery("SELECT * FROM user_login WHERE username LIKE
+    // '" + username + "'");
+    // try {
+    // return hashPassword(userDB).equals(user.getString("password"));
+    // } catch (SQLException ex) {
+    // Logger.getLogger(DatabaseConnector.class.getName()).log(Level.SEVERE, null,
+    // ex);
+    // }
+    // return false;
+    // }
     /**
      * @return the st
      */

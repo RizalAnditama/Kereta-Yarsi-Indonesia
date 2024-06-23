@@ -13,13 +13,25 @@ import model.Train;
 import model.TrainDAO;
 
 /**
- * Controller class for handling operations related to trains.
- * Implements the TrainDAO interface to provide data access methods for trains.
+ * Controller class for handling operations related to trains. Implements the
+ * TrainDAO interface to provide data access methods for trains.
+ *
+ * This class uses the singleton pattern to ensure that only one instance of the
+ * controller exists.
+ *
+ * <p>
+ * Example usage:
+ * </p>
  * 
+ * <pre>
+ * TrainController controller = TrainController.getInstance();
+ * Train train = controller.getTrainByTrainName("Argo Bromo");
+ * </pre>
+ *
  * @see model.TrainDAO
  * @see model.Train
  * @see model.DatabaseConnector
- * 
+ *
  * @version 1.0
  * @author Muhammad Rizal Anditama Nugraha
  */
@@ -28,9 +40,9 @@ public class TrainController extends Controller implements TrainDAO {
     private static TrainController instance;
 
     /**
-     * Private constructor to prevent direct instantiation.
-     * Initializes the controller with the given DatabaseConnector.
-     * 
+     * Private constructor to prevent direct instantiation. Initializes the
+     * controller with the given DatabaseConnector.
+     *
      * @param databaseConnector the database connector to use
      */
     private TrainController(DatabaseConnector databaseConnector) {
@@ -38,9 +50,9 @@ public class TrainController extends Controller implements TrainDAO {
     }
 
     /**
-     * Returns the single instance of TrainController.
-     * If no instance exists, it creates one using the provided DatabaseConnector.
-     * 
+     * Returns the single instance of TrainController. If no instance exists, it
+     * creates one using the provided DatabaseConnector.
+     *
      * @return the singleton instance of TrainController
      */
     public static synchronized TrainController getInstance() {
@@ -52,7 +64,7 @@ public class TrainController extends Controller implements TrainDAO {
 
     /**
      * Retrieves a train from the database by its name.
-     * 
+     *
      * @param trainName the name of the train to retrieve
      * @return a Train object if found, otherwise null
      */

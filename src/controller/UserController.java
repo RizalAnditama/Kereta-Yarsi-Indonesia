@@ -14,14 +14,26 @@ import model.User;
 import model.UserDAO;
 
 /**
- * Controller class for managing operations related to users.
- * Implements the UserDAO interface to provide methods for user management.
+ * Controller class for managing operations related to users. Implements the
+ * UserDAO interface to provide methods for user management.
+ *
+ * This class uses the singleton pattern to ensure that only one instance of the
+ * controller exists.
+ *
+ * <p>
+ * Example usage:
+ * </p>
  * 
+ * <pre>
+ * UserController controller = UserController.getInstance();
+ * boolean isLogin = controller.login("myworld", "theworld213");
+ * </pre>
+ *
  * @see model.UserDAO
  * @see model.User
  * @see model.Admin
  * @see model.DatabaseConnector
- * 
+ *
  * @version 1.0
  * @author Muhammad Rizal Anditama Nugraha
  */
@@ -30,9 +42,9 @@ public class UserController extends Controller implements UserDAO {
     private static UserController instance;
 
     /**
-     * Private constructor to prevent direct instantiation.
-     * Initializes the controller with the given DatabaseConnector.
-     * 
+     * Private constructor to prevent direct instantiation. Initializes the
+     * controller with the given DatabaseConnector.
+     *
      * @param databaseConnector the database connector to use
      */
     private UserController(DatabaseConnector databaseConnector) {
@@ -40,9 +52,9 @@ public class UserController extends Controller implements UserDAO {
     }
 
     /**
-     * Returns the single instance of UserController.
-     * If no instance exists, it creates one using the provided DatabaseConnector.
-     * 
+     * Returns the single instance of UserController. If no instance exists, it
+     * creates one using the provided DatabaseConnector.
+     *
      * @return the singleton instance of UserController
      */
     public static synchronized UserController getInstance() {
@@ -54,7 +66,7 @@ public class UserController extends Controller implements UserDAO {
 
     /**
      * Creates a new user in the database.
-     * 
+     *
      * @param user the User object representing the user to create
      * @return true if user creation was successful, false otherwise
      */
@@ -76,7 +88,7 @@ public class UserController extends Controller implements UserDAO {
 
     /**
      * Retrieves a user from the database by user ID.
-     * 
+     *
      * @param userID the ID of the user to retrieve
      * @return a User object if found, otherwise null
      */
@@ -105,7 +117,7 @@ public class UserController extends Controller implements UserDAO {
 
     /**
      * Retrieves a user from the database by username.
-     * 
+     *
      * @param username the username of the user to retrieve
      * @return a User object if found, otherwise null
      */
@@ -134,7 +146,7 @@ public class UserController extends Controller implements UserDAO {
 
     /**
      * Updates an existing user in the database.
-     * 
+     *
      * @param user the User object representing the updated user information
      * @return true if user update was successful, false otherwise
      */
@@ -157,7 +169,7 @@ public class UserController extends Controller implements UserDAO {
 
     /**
      * Deletes a user from the database by user ID.
-     * 
+     *
      * @param userID the ID of the user to delete
      * @return true if user deletion was successful, false otherwise
      */
@@ -176,7 +188,7 @@ public class UserController extends Controller implements UserDAO {
 
     /**
      * Registers a new user in the database.
-     * 
+     *
      * @param user the User object representing the user to register
      * @return true if user registration was successful, false otherwise
      */
@@ -187,7 +199,7 @@ public class UserController extends Controller implements UserDAO {
 
     /**
      * Authenticates a user login based on username and password.
-     * 
+     *
      * @param username the username of the user attempting to log in
      * @param password the password of the user attempting to log in
      * @return true if login is successful, false otherwise
@@ -209,7 +221,7 @@ public class UserController extends Controller implements UserDAO {
 
     /**
      * Performs user login and retrieves the User object if successful.
-     * 
+     *
      * @param username the username of the user attempting to log in
      * @param password the password of the user attempting to log in
      * @return the User object if login is successful, otherwise null
@@ -227,9 +239,9 @@ public class UserController extends Controller implements UserDAO {
     }
 
     /**
-     * Registers a new user in the database with the provided username and password.
-     * Automatically generates a salt for password encryption.
-     * 
+     * Registers a new user in the database with the provided username and
+     * password. Automatically generates a salt for password encryption.
+     *
      * @param username the username of the user to register
      * @param password the password of the user to register
      * @return true if user registration was successful, false otherwise
@@ -244,7 +256,7 @@ public class UserController extends Controller implements UserDAO {
 
     /**
      * Manages users based on the role of the provided User object.
-     * 
+     *
      * @param user the User object whose role determines the actions allowed
      */
     public void manageUsers(User user) {

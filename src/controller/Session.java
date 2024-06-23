@@ -17,11 +17,19 @@ import view.MainMenu_KYI;
 import view.SignIn_KYI;
 
 /**
- * Singleton class to manage session information.
- * This class holds the state of the current session including user, ticket,
- * passenger, station, and train details.
- * It also handles user authentication and access checks.
+ * Singleton class to manage session information. This class holds the state of
+ * the current session including user, ticket, passenger, station, and train
+ * details. It also handles user authentication and access checks.
+ *
+ * <p>
+ * Example usage:
+ * </p>
  * 
+ * <pre>
+ * Session session = Session.getInstance();
+ * String currentUsername = session.getUser.getUsername();
+ * </pre>
+ *
  * @see model.User
  * @see model.Ticket
  * @see model.Passenger
@@ -29,10 +37,10 @@ import view.SignIn_KYI;
  * @see model.Train
  * @see view.MainMenu_KYI
  * @see view.SignIn_KYI
- * 
+ *
  * @version 1.0
  * @author Muhammad Rizal Anditama Nugraha
- * 
+ *
  */
 public class Session {
 
@@ -55,9 +63,8 @@ public class Session {
     private Train train;
 
     /**
-     * No-argument constructor initializing default values.
-     * Initializes user, ticket, passenger, station, and train with default or empty
-     * values.
+     * No-argument constructor initializing default values. Initializes user,
+     * ticket, passenger, station, and train with default or empty values.
      */
     private Session() {
         this.auth = false;
@@ -70,13 +77,13 @@ public class Session {
 
     /**
      * Parameterized constructor for full initialization.
-     * 
-     * @param auth             the authentication status
-     * @param currentUser      the current user
-     * @param currentTicket    the current ticket
+     *
+     * @param auth the authentication status
+     * @param currentUser the current user
+     * @param currentTicket the current ticket
      * @param currentPassenger the current list of passengers
-     * @param currentStation   the current station
-     * @param currentTrain     the current train
+     * @param currentStation the current station
+     * @param currentTrain the current train
      */
     public Session(boolean auth, User currentUser, Ticket currentTicket, List<Passenger> currentPassenger,
             Station currentStation, Train currentTrain) {
@@ -89,9 +96,9 @@ public class Session {
     }
 
     /**
-     * Returns the single instance of Session.
-     * If no instance exists, it creates one using the default constructor.
-     * 
+     * Returns the single instance of Session. If no instance exists, it creates
+     * one using the default constructor.
+     *
      * @return the singleton instance of Session
      */
     public static synchronized Session getInstance() {
@@ -102,8 +109,8 @@ public class Session {
     }
 
     /**
-     * Clears the current session by setting user, ticket, passenger, station, and
-     * train to null.
+     * Clears the current session by setting user, ticket, passenger, station,
+     * and train to null.
      */
     public void clearSession() {
         setUser(null);
@@ -114,10 +121,9 @@ public class Session {
     }
 
     /**
-     * Checks if the user is authenticated.
-     * If not authenticated, displays a message and redirects to the SignIn_KYI
-     * view.
-     * 
+     * Checks if the user is authenticated. If not authenticated, displays a
+     * message and redirects to the SignIn_KYI view.
+     *
      * @param jFrame the current JFrame
      * @return true if the user is authenticated, false otherwise
      */
@@ -134,9 +140,9 @@ public class Session {
     }
 
     /**
-     * Checks if the user has admin access.
-     * If not an admin, displays a message and redirects to the MainMenu_KYI view.
-     * 
+     * Checks if the user has admin access. If not an admin, displays a message
+     * and redirects to the MainMenu_KYI view.
+     *
      * @param jFrame the current JFrame
      * @return true if the user has admin access, false otherwise
      */
@@ -155,7 +161,7 @@ public class Session {
 
     /**
      * Gets the current user.
-     * 
+     *
      * @return the current user
      */
     public User getUser() {
@@ -164,7 +170,7 @@ public class Session {
 
     /**
      * Sets the current user.
-     * 
+     *
      * @param user the user to set
      */
     public void setUser(User user) {
@@ -173,7 +179,7 @@ public class Session {
 
     /**
      * Gets the current ticket.
-     * 
+     *
      * @return the current ticket
      */
     public Ticket getTicket() {
@@ -182,7 +188,7 @@ public class Session {
 
     /**
      * Sets the current ticket.
-     * 
+     *
      * @param ticket the ticket to set
      */
     public void setTicket(Ticket ticket) {
@@ -191,7 +197,7 @@ public class Session {
 
     /**
      * Gets the list of current passengers.
-     * 
+     *
      * @return the list of current passengers
      */
     public List<Passenger> getPassenger() {
@@ -200,7 +206,7 @@ public class Session {
 
     /**
      * Sets the list of current passengers.
-     * 
+     *
      * @param passenger the list of passengers to set
      */
     public void setPassenger(List<Passenger> passenger) {
@@ -209,7 +215,7 @@ public class Session {
 
     /**
      * Gets the current station.
-     * 
+     *
      * @return the current station
      */
     public Station getStation() {
@@ -218,7 +224,7 @@ public class Session {
 
     /**
      * Sets the current station.
-     * 
+     *
      * @param station the station to set
      */
     public void setStation(Station station) {
@@ -227,7 +233,7 @@ public class Session {
 
     /**
      * Gets the current train.
-     * 
+     *
      * @return the current train
      */
     public Train getTrain() {
@@ -236,7 +242,7 @@ public class Session {
 
     /**
      * Sets the current train.
-     * 
+     *
      * @param train the train to set
      */
     public void setTrain(Train train) {
@@ -245,7 +251,7 @@ public class Session {
 
     /**
      * Checks if the user is authenticated.
-     * 
+     *
      * @return true if the user is authenticated, false otherwise
      */
     public boolean isAuth() {
@@ -254,7 +260,7 @@ public class Session {
 
     /**
      * Sets the authentication status of the user.
-     * 
+     *
      * @param auth the authentication status to set
      */
     public void setAuth(boolean auth) {
@@ -263,7 +269,7 @@ public class Session {
 
     /**
      * Gets the number of adult passengers.
-     * 
+     *
      * @return the number of adult passengers
      */
     public int getPenumpangDewasa() {
@@ -272,7 +278,7 @@ public class Session {
 
     /**
      * Sets the number of adult passengers.
-     * 
+     *
      * @param penumpangDewasa the number of adult passengers to set
      */
     public void setPenumpangDewasa(int penumpangDewasa) {
@@ -281,7 +287,7 @@ public class Session {
 
     /**
      * Gets the number of child passengers.
-     * 
+     *
      * @return the number of child passengers
      */
     public int getPenumpangAnak() {
@@ -290,7 +296,7 @@ public class Session {
 
     /**
      * Sets the number of child passengers.
-     * 
+     *
      * @param penumpangAnak the number of child passengers to set
      */
     public void setPenumpangAnak(int penumpangAnak) {
@@ -299,7 +305,7 @@ public class Session {
 
     /**
      * Gets the total number of passengers.
-     * 
+     *
      * @return the total number of passengers
      */
     public int getPenumpangTotal() {
@@ -308,7 +314,7 @@ public class Session {
 
     /**
      * Sets the total number of passengers.
-     * 
+     *
      * @param penumpangTotal the total number of passengers to set
      */
     public void setPenumpangTotal(int penumpangTotal) {
@@ -317,7 +323,7 @@ public class Session {
 
     /**
      * Gets the payment method.
-     * 
+     *
      * @return the payment method
      */
     public String getMetodePembayaran() {
@@ -326,7 +332,7 @@ public class Session {
 
     /**
      * Sets the payment method.
-     * 
+     *
      * @param metodePembayaran the payment method to set
      */
     public void setMetodePembayaran(String metodePembayaran) {
@@ -335,7 +341,7 @@ public class Session {
 
     /**
      * Gets the subtotal price.
-     * 
+     *
      * @return the subtotal price
      */
     public double getSubtotalHarga() {
@@ -344,7 +350,7 @@ public class Session {
 
     /**
      * Sets the subtotal price.
-     * 
+     *
      * @param subtotalHarga the subtotal price to set
      */
     public void setSubtotalHarga(double subtotalHarga) {
@@ -353,7 +359,7 @@ public class Session {
 
     /**
      * Gets the total price.
-     * 
+     *
      * @return the total price
      */
     public double getTotalHarga() {
@@ -362,7 +368,7 @@ public class Session {
 
     /**
      * Sets the total price.
-     * 
+     *
      * @param totalHarga the total price to set
      */
     public void setTotalHarga(double totalHarga) {
@@ -371,7 +377,7 @@ public class Session {
 
     /**
      * Gets the insurance discount amount.
-     * 
+     *
      * @return the insurance discount amount
      */
     public double getPotonganAsuransi() {
@@ -380,7 +386,7 @@ public class Session {
 
     /**
      * Sets the insurance discount amount.
-     * 
+     *
      * @param potonganAsuransi the insurance discount amount to set
      */
     public void setPotonganAsuransi(double potonganAsuransi) {
@@ -389,7 +395,7 @@ public class Session {
 
     /**
      * Gets the handling fee discount amount.
-     * 
+     *
      * @return the handling fee discount amount
      */
     public double getPotonganBiayaPenanganan() {
@@ -398,7 +404,7 @@ public class Session {
 
     /**
      * Sets the handling fee discount amount.
-     * 
+     *
      * @param potonganBiayaPenanganan the handling fee discount amount to set
      */
     public void setPotonganBiayaPenanganan(double potonganBiayaPenanganan) {

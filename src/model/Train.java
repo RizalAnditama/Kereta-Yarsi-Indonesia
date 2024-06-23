@@ -7,7 +7,21 @@ package model;
 import java.sql.Timestamp;
 
 /**
- *
+ * The {@code Train} class represents a train with its details such as train ID,
+ * name, starting station, ending station, departing and arriving times, and
+ * price.
+ * It provides getters and setters for accessing and modifying these details.
+ * <p>
+ * Instances of this class can be used to store and manipulate information about
+ * trains in a railway reservation system.
+ * </p>
+ * 
+ * @version 1.0
+ * @since 2024-06-23
+ * 
+ * @see TrainDAO
+ * @see controller.TrainController
+ * 
  * @author Muhammad Rizal Anditama Nugraha
  */
 public class Train {
@@ -20,6 +34,9 @@ public class Train {
     private Timestamp arrivingTime;
     private int price;
 
+    /**
+     * Constructs a new {@code Train} object with default values.
+     */
     public Train() {
         this.trainID = 0;
         this.name = null;
@@ -29,9 +46,21 @@ public class Train {
         this.arrivingTime = null;
         this.price = 0;
     }
-    
-    public Train(int train_id, String name, String startingStation, String endingStation, Timestamp departingTime, Timestamp arrivingTime, int price) {
-        this.trainID = train_id;
+
+    /**
+     * Constructs a new {@code Train} object with the specified values.
+     * 
+     * @param trainID         the ID of the train
+     * @param name            the name of the train
+     * @param startingStation the starting station of the train
+     * @param endingStation   the ending station of the train
+     * @param departingTime   the departing time of the train
+     * @param arrivingTime    the arriving time of the train
+     * @param price           the price of the train ticket
+     */
+    public Train(int trainID, String name, String startingStation, String endingStation, Timestamp departingTime,
+            Timestamp arrivingTime, int price) {
+        this.trainID = trainID;
         this.name = name;
         this.startingStation = startingStation;
         this.endingStation = endingStation;
@@ -41,91 +70,91 @@ public class Train {
     }
 
     /**
-     * @return the trainID
+     * @return the train ID
      */
     public int getTrainID() {
         return trainID;
     }
 
     /**
-     * @param trainID the trainID to set
+     * @param trainID the train ID to set
      */
     public void setTrainID(int trainID) {
         this.trainID = trainID;
     }
 
     /**
-     * @return the name
+     * @return the name of the train
      */
     public String getName() {
         return name;
     }
 
     /**
-     * @param name the name to set
+     * @param name the name of the train to set
      */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     * @return the startingStation
+     * @return the starting station of the train
      */
     public String getStartingStation() {
         return startingStation;
     }
 
     /**
-     * @param startingStation the startingStation to set
+     * @param startingStation the starting station to set
      */
     public void setStartingStation(String startingStation) {
         this.startingStation = startingStation.replace("Stasiun ", "");
     }
 
     /**
-     * @return the endingStation
+     * @return the ending station of the train
      */
     public String getEndingStation() {
         return endingStation;
     }
 
     /**
-     * @param endingStation the endingStation to set
+     * @param endingStation the ending station to set
      */
     public void setEndingStation(String endingStation) {
         this.endingStation = endingStation.replace("Stasiun ", "");
     }
 
     /**
-     * @return the departingTime
+     * @return the departing time of the train
      */
     public Timestamp getDepartingTime() {
         return departingTime;
     }
 
     /**
-     * @param departingTime the departingTime to set
+     * @param departingTime the departing time to set
      */
     public void setDepartingTime(Timestamp departingTime) {
         this.departingTime = departingTime;
     }
 
     /**
-     * @return the arrivingTime
+     * @return the arriving time of the train
      */
     public Timestamp getArrivingTime() {
         return arrivingTime;
     }
 
     /**
-     * @param arrivingTime the arrivingTime to set
+     * @param arrivingTime the arriving time to set
      */
     public void setArrivingTime(Timestamp arrivingTime) {
         this.arrivingTime = arrivingTime;
     }
 
     /**
-     * @return the price
+     * @return the price of the train ticket
      */
     public int getPrice() {
         return price;

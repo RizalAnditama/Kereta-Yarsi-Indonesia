@@ -5,8 +5,20 @@
 package model;
 
 /**
- *
- * @author Muhammad Rizal Anditama Nugraha
+ * The {@code Station} class represents a railway station in the KYI Integrated
+ * system.
+ * <p>
+ * It includes details such as the station's ID, code, name, and city.
+ * This class provides getter and setter methods for accessing and modifying
+ * these details.
+ * </p>
+ * <p>
+ * Instances of this class are used to represent and manipulate station data
+ * within the application.
+ * </p>
+ * 
+ * @author
+ *         Muhammad Rizal Anditama Nugraha
  */
 public class Station {
 
@@ -15,6 +27,10 @@ public class Station {
     private String name;
     private String city;
 
+    /**
+     * Default constructor. Initializes a new instance of the {@code Station} class
+     * with default values.
+     */
     public Station() {
         this.stationID = 0;
         this.stationCode = null;
@@ -22,6 +38,15 @@ public class Station {
         this.city = null;
     }
 
+    /**
+     * Initializes a new instance of the {@code Station} class with the specified
+     * values.
+     * 
+     * @param stationID   the ID of the station
+     * @param stationCode the code of the station
+     * @param name        the name of the station
+     * @param city        the city where the station is located
+     */
     public Station(int stationID, String stationCode, String name, String city) {
         this.stationID = stationID;
         this.stationCode = stationCode;
@@ -30,6 +55,8 @@ public class Station {
     }
 
     /**
+     * Gets the ID of the station.
+     * 
      * @return the stationID
      */
     public int getStationID() {
@@ -37,6 +64,8 @@ public class Station {
     }
 
     /**
+     * Sets the ID of the station.
+     * 
      * @param stationID the stationID to set
      */
     public void setStationID(int stationID) {
@@ -44,6 +73,8 @@ public class Station {
     }
 
     /**
+     * Gets the code of the station.
+     * 
      * @return the stationCode
      */
     public String getStationCode() {
@@ -51,6 +82,8 @@ public class Station {
     }
 
     /**
+     * Sets the code of the station.
+     * 
      * @param stationCode the stationCode to set
      */
     public void setStationCode(String stationCode) {
@@ -58,6 +91,8 @@ public class Station {
     }
 
     /**
+     * Gets the name of the station.
+     * 
      * @return the name
      */
     public String getName() {
@@ -65,6 +100,8 @@ public class Station {
     }
 
     /**
+     * Sets the name of the station.
+     * 
      * @param name the name to set
      */
     public void setName(String name) {
@@ -72,6 +109,8 @@ public class Station {
     }
 
     /**
+     * Gets the city where the station is located.
+     * 
      * @return the city
      */
     public String getCity() {
@@ -79,6 +118,8 @@ public class Station {
     }
 
     /**
+     * Sets the city where the station is located.
+     * 
      * @param city the city to set
      */
     public void setCity(String city) {
