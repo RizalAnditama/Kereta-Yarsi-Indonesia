@@ -1,0 +1,49 @@
+/*!
+ * @mainpage Kereta Yarsi Indonesia 
+ * @image html "Icon KYI.png" width=150
+ *
+ * @section intro_sec Introduction
+ *
+ * Welcome to the documentation for the Kereta Yarsi Indonesia Ticket Ordering System. 
+ * This project provides functionalities for ticket ordering, database operations, and 
+ * password hashing techniques.
+ *
+ * @section install_sec Installation
+ *
+ * To use this project, follow these steps:
+ * - Clone the repository: `git clone https://github.com/RizalAnditama/Kereta-Yarsi-Indonesia.git`
+ * - Navigate to the project directory: `cd kereta-yarsi-indonesia`
+ * - Generate the Doxygen documentation: `doxygen Doxyfile`
+ *
+ * @section usage_sec Usage
+ *
+ * Here are some example usages of the functions provided in this project:
+ *
+ * @subsection findAll
+ * 
+ * ```
+ * ResultSet rs = findAll("your_table");
+ * ```
+ *
+ * @subsection findWhere
+ *
+ * ```
+ * ResultSet rs = findWhere("your_table", "your_column", "your_keyword");
+ * ```
+ *
+ * @subsection insert
+ *
+ * ```
+ * boolean success = insert("your_table", false, "value1", "value2", "value3");
+ * ```
+ *
+ * @subsection hashPassword
+ *
+ * ```
+ * String hashedPassword = hashPassword("your_password");
+ * ```
+ *
+ * @section doxygen_awesome Styling
+ *
+ * This project uses [doxygen-awesome-css](https://github.com/jothepro/doxygen-awesome-css) for styling the generated documentation.
+ */
