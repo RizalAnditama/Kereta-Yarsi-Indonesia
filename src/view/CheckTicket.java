@@ -103,6 +103,8 @@ public class CheckTicket extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_jTextField1KeyReleased
+        jTextField1.setText(jTextField1.getText().toUpperCase());
+
         List<Passenger> passengers = new ArrayList<>();
         String ticketCode = jTextField1.getText();
         Controller.rs = ticketController.getAllJoin(ticketCode);

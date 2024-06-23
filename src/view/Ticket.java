@@ -92,8 +92,14 @@ public class Ticket extends javax.swing.JFrame {
         jamTiba.setText("Jam " + formatTimestamp(timestampArrive, "hh:mm"));
         tanggalTiba.setText(formatTimestamp(timestampArrive, "dd MMMM YYYY"));
 
-        stasiunAwal.setText(stasiunAsal.toUpperCase());
-        stasiunAkhir.setText(stasiunAkhir1.toUpperCase());
+        if (stasiunAsal.contains("stasiun") && stasiunAkhir1.contains("stasiun")) {
+            stasiunAwal.setText(stasiunAsal.toUpperCase());
+            stasiunAkhir.setText(stasiunAkhir1.toUpperCase());
+        } else {
+            stasiunAwal.setText("STASIUN " + stasiunAsal.toUpperCase());
+            stasiunAkhir.setText("STASIUN " +stasiunAkhir1.toUpperCase());
+        }
+
         namaKereta.setText(namaKereta1.toUpperCase());
         kodePemesanan.setText(ticketCode);
 
