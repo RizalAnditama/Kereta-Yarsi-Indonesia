@@ -106,7 +106,7 @@ public class SignUp_KYI extends javax.swing.JFrame {
 
         buttonSignUp.setBackground(new java.awt.Color(26, 101, 0));
         buttonSignUp.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        buttonSignUp.setForeground(new java.awt.Color(0, 0, 0));
+        buttonSignUp.setForeground(new java.awt.Color(255, 255, 255));
         buttonSignUp.setText("Sign Up");
         buttonSignUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

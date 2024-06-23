@@ -103,7 +103,7 @@ public class SignIn_KYI extends javax.swing.JFrame {
 
         buttonLogin.setBackground(new java.awt.Color(26, 101, 0));
         buttonLogin.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        buttonLogin.setForeground(new java.awt.Color(0, 0, 0));
+        buttonLogin.setForeground(new java.awt.Color(255, 255, 255));
         buttonLogin.setText("Login");
         buttonLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
