@@ -1,0 +1,15 @@
+<map id="Controller" name="Controller">
+<area shape="rect" id="Node000001" title=" " alt="" coords="488,5,635,949"/>
+<area shape="rect" id="Node000002" href="$classcontroller_1_1_admin_controller.html" title=" " alt="" coords="5,1040,171,1237"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="482,590,185,999,155,1042,151,1039,180,996,478,586"/>
+<area shape="rect" id="Node000003" href="$classcontroller_1_1_passenger_controller.html" title=" " alt="" coords="195,1072,395,1205"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="485,674,323,1073,319,1071,480,672"/>
+<area shape="rect" id="Node000004" href="$classcontroller_1_1_station_controller.html" title=" " alt="" coords="419,1093,559,1184"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="511,964,497,1094,491,1093,506,963"/>
+<area shape="rect" id="Node000005" href="$classcontroller_1_1_ticket_controller.html" title=" " alt="" coords="583,1072,686,1205"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="618,963,630,1072,625,1073,613,964"/>
+<area shape="rect" id="Node000006" href="$classcontroller_1_1_train_controller.html" title=" " alt="" coords="710,1093,866,1184"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="642,704,775,1093,770,1094,637,706"/>
+<area shape="rect" id="Node000007" href="$classcontroller_1_1_user_controller.html" title=" " alt="" coords="891,997,1043,1280"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="644,608,893,1013,889,1016,640,611"/>
+</map>

@@ -1,0 +1,25 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classcontroller_1_1_controller.html" title=" " alt="" coords="23,107,99,133"/>
+<area shape="rect" id="Node000001" href="$classcontroller_1_1_admin_controller.html" title=" " alt="" coords="177,107,291,133"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="114,117,177,117,177,123,114,123"/>
+<area shape="rect" id="Node000002" href="$classcontroller_1_1_passenger_controller.html" title=" " alt="" coords="165,5,303,32"/>
+<area shape="poly" id="edge2_Node000000_Node000002" title=" " alt="" coords="108,97,115,93,129,80,138,67,148,55,163,42,185,30,188,35,166,46,152,58,143,71,133,83,118,97,111,101"/>
+<area shape="rect" id="Node000004" href="$classcontroller_1_1_station_controller.html" title=" " alt="" coords="175,56,293,83"/>
+<area shape="poly" id="edge3_Node000000_Node000004" title=" " alt="" coords="113,102,185,81,186,86,114,107"/>
+<area shape="rect" id="Node000006" href="$classcontroller_1_1_ticket_controller.html" title=" " alt="" coords="178,157,290,184"/>
+<area shape="poly" id="edge4_Node000000_Node000006" title=" " alt="" coords="114,133,186,154,185,159,113,138"/>
+<area shape="rect" id="Node000008" href="$classcontroller_1_1_train_controller.html" title=" " alt="" coords="182,208,286,235"/>
+<area shape="poly" id="edge5_Node000000_Node000008" title=" " alt="" coords="111,139,118,143,133,157,143,169,152,182,166,194,188,205,185,210,163,198,148,185,138,173,129,160,115,147,108,143"/>
+<area shape="rect" id="Node000010" href="$classcontroller_1_1_user_controller.html" title=" " alt="" coords="182,259,286,285"/>
+<area shape="poly" id="edge6_Node000000_Node000010" title=" " alt="" coords="114,139,119,144,136,170,143,196,149,220,167,245,183,256,180,260,163,249,144,223,138,197,131,172,115,147,110,143"/>
+<area shape="rect" id="Node000003" href="$interfacemodel_1_1_passenger_d_a_o.html" title=" " alt="" coords="5,5,117,32"/>
+<area shape="poly" id="edge7_Node000003_Node000002" title=" " alt="" coords="131,16,164,16,164,21,131,21"/>
+<area shape="rect" id="Node000005" href="$interfacemodel_1_1_station_d_a_o.html" title=" " alt="" coords="16,56,106,83"/>
+<area shape="poly" id="edge8_Node000005_Node000004" title=" " alt="" coords="121,67,175,67,175,72,121,72"/>
+<area shape="rect" id="Node000007" href="$interfacemodel_1_1_ticket_d_a_o.html" title=" " alt="" coords="19,157,103,184"/>
+<area shape="poly" id="edge9_Node000007_Node000006" title=" " alt="" coords="118,168,178,168,178,173,118,173"/>
+<area shape="rect" id="Node000009" href="$interfacemodel_1_1_train_d_a_o.html" title=" " alt="" coords="22,208,100,235"/>
+<area shape="poly" id="edge10_Node000009_Node000008" title=" " alt="" coords="114,219,181,219,181,224,114,224"/>
+<area shape="rect" id="Node000011" href="$interfacemodel_1_1_user_d_a_o.html" title=" " alt="" coords="23,259,99,285"/>
+<area shape="poly" id="edge11_Node000011_Node000010" title=" " alt="" coords="114,269,182,269,182,275,114,275"/>
+</map>

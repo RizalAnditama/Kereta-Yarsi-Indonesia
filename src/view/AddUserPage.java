@@ -5,21 +5,14 @@ package view;
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 import controller.UserController;
+import controller.AdminController;
 import java.awt.Color;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import model.DatabaseConnector;
 import java.awt.event.ActionEvent;
-import java.util.*;
-import java.sql.PreparedStatement;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -27,14 +20,15 @@ import javax.swing.JOptionPane;
  * @author mraih
  * @author Muhammad Rizal Anditama Nugraha
  */
-public class SignUp_KYI extends javax.swing.JFrame {
+public class AddUserPage extends javax.swing.JFrame {
 
-    UserController userController;
+    UserController userController = UserController.getInstance();
+    AdminController adminController = AdminController.getInstance();
 
     /**
      * Creates new form SignUp_KYI
      */
-    public SignUp_KYI(UserController userController) {
+    public AddUserPage() {
         initComponents();
         getContentPane().setBackground(new Color(0, 102, 51, 255));
         setExtendedState(MAXIMIZED_BOTH);
@@ -50,7 +44,9 @@ public class SignUp_KYI extends javax.swing.JFrame {
         textUsername.addActionListener(enterPressed);
         textPassword.addActionListener(enterPressed);
         textCPassword.addActionListener(enterPressed);
-        this.userController = userController;
+        
+        jLabel1.setVisible(false);
+        jLabel2.setVisible(false);
     }
 
     Action enterPressed = new AbstractAction() {
@@ -91,7 +87,7 @@ public class SignUp_KYI extends javax.swing.JFrame {
         logoKYS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Gambar/Logo KYI.png"))); // NOI18N
 
         labelLogin.setFont(new java.awt.Font("Century Gothic", 1, 36)); // NOI18N
-        labelLogin.setText("Sign Up");
+        labelLogin.setText("Add User");
 
         textUsername.setForeground(new java.awt.Color(0, 0, 0));
         textUsername.addActionListener(new java.awt.event.ActionListener() {
@@ -233,7 +229,7 @@ public class SignUp_KYI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Passwords do not match", "Error", JOptionPane.ERROR_MESSAGE);
         } else if (userController.register(username, password)) {
             JOptionPane.showMessageDialog(this, "Sign Up successful!", "Info", JOptionPane.INFORMATION_MESSAGE);
-            new SignIn_KYI(userController).setVisible(true);
+            adminController.display(adminController.getLastTable());
             this.dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Sign Up failed. Try again later.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -262,14 +258,16 @@ public class SignUp_KYI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SignUp_KYI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddUserPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SignUp_KYI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddUserPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SignUp_KYI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddUserPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SignUp_KYI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddUserPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 

@@ -51,7 +51,7 @@ import model.Train;
  * <p>
  * Example usage:
  * </p>
- * 
+ *
  * <pre>
  * Controller controller = Controller.getInstance();
  * int userCount = controller.getRowCount("user");
@@ -127,7 +127,7 @@ public class Controller {
      * Encrypts a password using PBKDF2 with HMAC SHA-256.
      *
      * @param password the password to encrypt
-     * @param salt     the salt to use in the encryption
+     * @param salt the salt to use in the encryption
      * @return the encrypted password
      */
     public static String encryptPBKDF2(String password, byte[] salt) {
@@ -153,9 +153,9 @@ public class Controller {
     /**
      * Verifies if the input password matches the stored password.
      *
-     * @param inputPassword  the password to verify
+     * @param inputPassword the password to verify
      * @param storedPassword the stored hashed password
-     * @param salt           the salt used in hashing
+     * @param salt the salt used in hashing
      * @return true if passwords match, false otherwise
      */
     public static boolean verifyPassword(String inputPassword, String storedPassword, byte[] salt) {
@@ -176,9 +176,9 @@ public class Controller {
     /**
      * Sets the initial train information for a session.
      *
-     * @param stasiunAsal   the starting station
-     * @param stasiunAkhir  the ending station
-     * @param tanggalPergi  the departure date
+     * @param stasiunAsal the starting station
+     * @param stasiunAkhir the ending station
+     * @param tanggalPergi the departure date
      * @param tanggalPulang the return date
      */
     public void setFirstStuff(String stasiunAsal, String stasiunAkhir, Date tanggalPergi, Date tanggalPulang) {
@@ -195,9 +195,9 @@ public class Controller {
     /**
      * Counts the number of trains matching the specified criteria.
      *
-     * @param stasiunAwal  the starting station
+     * @param stasiunAwal the starting station
      * @param stasiunAkhir the ending station
-     * @param tanggal      the date of departure
+     * @param tanggal the date of departure
      * @return the number of matching trains
      */
     public int countFoundTrain(String stasiunAwal, String stasiunAkhir, Date tanggal) {
@@ -219,9 +219,9 @@ public class Controller {
     /**
      * Finds specific trains matching the criteria.
      *
-     * @param stasiunAwal  the starting station
+     * @param stasiunAwal the starting station
      * @param stasiunAkhir the ending station
-     * @param tanggal      the date of departure
+     * @param tanggal the date of departure
      * @return a ResultSet of the matching trains
      */
     public ResultSet findSpecificTrain(String stasiunAwal, String stasiunAkhir, Date tanggal) {
@@ -285,9 +285,9 @@ public class Controller {
     /**
      * Finds records from a table where a specific column matches a keyword.
      *
-     * @param table      the table to query
+     * @param table the table to query
      * @param columnName the column to search
-     * @param keyword    the keyword to match
+     * @param keyword the keyword to match
      * @return a ResultSet containing the matching records
      */
     public ResultSet findWhere(String table, String columnName, Object keyword) {
@@ -297,13 +297,13 @@ public class Controller {
     /**
      * Executes a specified SQL query.
      *
-     * @param execute the SQL query to execute
+     * @param sql the SQL query to execute
      * @return a ResultSet containing the results of the query
      */
-    public ResultSet executeQuery(String execute) {
+    public ResultSet executeQuery(String sql) {
         try {
             setSt(con.createStatement());
-            setRs(getSt().executeQuery(execute));
+            setRs(getSt().executeQuery(sql));
         } catch (SQLException ex) {
             Logger.getLogger(DatabaseConnector.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -311,12 +311,42 @@ public class Controller {
         return getRs();
     }
 
+    public ResultSet executeQuery(String sql, Object... values) {
+        try {
+            ps = con.prepareStatement(sql);
+            for (int i = 0; i < values.length; i++) {
+                ps.setObject(i + 1, values[i]);
+            }
+            rs = ps.executeQuery();
+        } catch (SQLException ex) {
+            Logger.getLogger(DatabaseConnector.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return getRs();
+    }
+    
+    public boolean executeUpdate(String sql, Object... values){
+        int rowsAffected = 0;
+        try {
+            ps = con.prepareStatement(sql);
+            for (int i = 0; i < values.length; i++) {
+                ps.setObject(i + 1, values[i]);
+            }
+            rowsAffected = ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(DatabaseConnector.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return rowsAffected > 0;
+    }
+    
+
     /**
      * Inserts a new record into a specified table.
      *
-     * @param table  the table to insert into
+     * @param table the table to insert into
      * @param withID whether to include an ID column
-     * @param value  the values to insert
+     * @param value the values to insert
      * @return true if the insertion was successful, false otherwise
      */
     public boolean insert(String table, boolean withID, Object... value) {
@@ -376,7 +406,7 @@ public class Controller {
     /**
      * Displays an error message dialog.
      *
-     * @param title   the title of the dialog
+     * @param title the title of the dialog
      * @param message the message to display
      * @throws HeadlessException if an error occurs
      */
@@ -479,9 +509,9 @@ public class Controller {
      * Retrieves the row count of a specified table where a column matches a
      * keyword.
      *
-     * @param table      the table to query
+     * @param table the table to query
      * @param columnName the column to search
-     * @param keyword    the keyword to match
+     * @param keyword the keyword to match
      * @return the number of matching rows
      */
     public int getRowCountWhere(String table, String columnName, String keyword) {

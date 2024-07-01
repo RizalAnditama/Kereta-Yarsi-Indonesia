@@ -1,0 +1,7 @@
+<map id="PassengerController" name="PassengerController">
+<area shape="rect" id="Node000001" title=" " alt="" coords="77,997,277,1131"/>
+<area shape="rect" id="Node000002" href="$classcontroller_1_1_controller.html" title=" " alt="" coords="5,5,152,949"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="157,927,169,997,164,998,152,928"/>
+<area shape="rect" id="Node000003" href="$interfacemodel_1_1_passenger_d_a_o.html" title=" " alt="" coords="176,421,376,533"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="267,548,191,998,186,997,262,547"/>
+</map>

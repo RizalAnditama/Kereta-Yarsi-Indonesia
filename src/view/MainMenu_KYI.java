@@ -44,6 +44,9 @@ public class MainMenu_KYI extends javax.swing.JFrame {
         Session session = userController.getSession();
         int userID = session.getUser().getUserID();
         session.getUser().setUsername(userController.getUser(userID).getUsername());
+        if (!session.getUser().getRole().equalsIgnoreCase("admin")) {
+            adminPageButton.setVisible(false);
+        }
     }
 
     /**
@@ -59,6 +62,7 @@ public class MainMenu_KYI extends javax.swing.JFrame {
         logo = new javax.swing.JLabel();
         orderTicket = new javax.swing.JButton();
         myTicket = new javax.swing.JButton();
+        adminPageButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Kereta Yarsi Indonesia");
@@ -91,6 +95,13 @@ public class MainMenu_KYI extends javax.swing.JFrame {
             }
         });
 
+        adminPageButton.setText("ADMIN PAGE");
+        adminPageButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adminPageButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -103,7 +114,8 @@ public class MainMenu_KYI extends javax.swing.JFrame {
                         .addGap(12, 12, 12)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(orderTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(myTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(myTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(adminPageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(80, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -114,7 +126,9 @@ public class MainMenu_KYI extends javax.swing.JFrame {
                 .addComponent(orderTicket)
                 .addGap(18, 18, 18)
                 .addComponent(myTicket)
-                .addGap(0, 41, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addComponent(adminPageButton)
+                .addGap(0, 31, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -125,7 +139,9 @@ public class MainMenu_KYI extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -144,6 +160,11 @@ public class MainMenu_KYI extends javax.swing.JFrame {
         CheckTicket check = new CheckTicket();
         check.setVisible(true);
     }//GEN-LAST:event_myTicketActionPerformed
+
+    private void adminPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminPageButtonActionPerformed
+        new AdminPage().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_adminPageButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -181,6 +202,7 @@ public class MainMenu_KYI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton adminPageButton;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel logo;
     private javax.swing.JButton myTicket;

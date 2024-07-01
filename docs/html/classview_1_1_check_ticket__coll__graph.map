@@ -1,0 +1,9 @@
+<map id="CheckTicket" name="CheckTicket">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,272,109,363"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="8,139,64,208"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="46,222,53,272,48,273,41,222"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="89,139,247,208"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="144,209,104,260,100,257,140,206"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="151,5,185,75"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="171,89,171,139,165,139,165,89"/>
+</map>
