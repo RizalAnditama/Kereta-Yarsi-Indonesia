@@ -110,7 +110,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ae4bd68773e3a4c1d29a47560bde0b20d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><dl class="section author"><dt>Author</dt><dd>Muhammad Rizal Anditama Nugraha </dd></dl>
+<div class="textblock"><p>CustomTableModel is a custom implementation of DefaultTableModel that copies data from another TableModel and makes all cells uneditable.</p>
+<p>This class is used to provide a read-only table model based on an existing table model.</p>
+<dl class="section author"><dt>Author</dt><dd>Muhammad Rizal Anditama Nugraha </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a98c3b7e5c0cdb28fe3f10833be13f815" name="a98c3b7e5c0cdb28fe3f10833be13f815"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a98c3b7e5c0cdb28fe3f10833be13f815">&#9670;&#160;</a></span>CustomTableModel()</h2>
@@ -135,6 +137,13 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Constructs a CustomTableModel by copying the data from the provided TableModel.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">model</td><td>The TableModel to copy data from. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -172,6 +181,15 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Overrides the isCellEditable method to make all cells uneditable.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">row</td><td>The row index of the cell. </td></tr>
+    <tr><td class="paramname">column</td><td>The column index of the cell. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Always returns false to indicate that all cells are uneditable. </dd></dl>
 
 </div>
 </div>

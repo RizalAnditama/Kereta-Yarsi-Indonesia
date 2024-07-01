@@ -114,8 +114,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a99100cd4e29fd3b635d7c595abdc95c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef8caaf9366a49119aa550988c35ddec"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcontroller_1_1_admin_controller.html#aef8caaf9366a49119aa550988c35ddec">setSelectedUserRole</a> (int userId, String role)</td></tr>
 <tr class="separator:aef8caaf9366a49119aa550988c35ddec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a49f849bc4c4208e78753680a4ebd115a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcontroller_1_1_admin_controller.html#a49f849bc4c4208e78753680a4ebd115a">invertSelectedUserRole</a> (int userId)</td></tr>
-<tr class="separator:a49f849bc4c4208e78753680a4ebd115a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a365791d47fa1ba881740cd694c417b81"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcontroller_1_1_admin_controller.html#a365791d47fa1ba881740cd694c417b81">invertSelectedUserRole</a> (int userId)</td></tr>
+<tr class="separator:a365791d47fa1ba881740cd694c417b81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e20676713a7e2af1374956bbf3326ea"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcontroller_1_1_admin_controller.html#a8e20676713a7e2af1374956bbf3326ea">deleteUser</a> (int userId)</td></tr>
 <tr class="separator:a8e20676713a7e2af1374956bbf3326ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abcf630706e975cce6c9718fd93943414"><td class="memItemLeft" align="right" valign="top">JTable&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcontroller_1_1_admin_controller.html#abcf630706e975cce6c9718fd93943414">getLastTable</a> ()</td></tr>
@@ -222,7 +222,8 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a04b5f20102ce0146a2a35fde27dea87a inherit pro_static_attribs_classcontroller_1_1_controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><dl class="section author"><dt>Author</dt><dd>Muhammad Rizal Anditama Nugraha </dd></dl>
+<div class="textblock"><p>The AdminController class is responsible for managing admin-related operations such as displaying users, managing user roles, and deleting users. This class follows the singleton pattern to ensure only one instance is created.</p>
+<dl class="section author"><dt>Author</dt><dd>Muhammad Rizal Anditama Nugraha </dd></dl>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a8e20676713a7e2af1374956bbf3326ea" name="a8e20676713a7e2af1374956bbf3326ea"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8e20676713a7e2af1374956bbf3326ea">&#9670;&#160;</a></span>deleteUser()</h2>
@@ -247,6 +248,14 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Deletes the user with the specified user ID.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">userId</td><td>The ID of the user to be deleted. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the user was successfully deleted, false otherwise. </dd></dl>
 
 </div>
 </div>
@@ -273,6 +282,13 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Displays the user information in the given JTable.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">table</td><td>The JTable to display the user information in. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -298,8 +314,8 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns the singleton instance of the Controller.</p>
-<dl class="section return"><dt>Returns</dt><dd>the singleton instance </dd></dl>
+<p>Returns the singleton instance of AdminController.</p>
+<dl class="section return"><dt>Returns</dt><dd>The singleton instance of AdminController. </dd></dl>
 
 <p>Reimplemented from <a class="el" href="classcontroller_1_1_controller.html#a50b06224f0536cfbf3ce038e25dcc982">controller.Controller</a>.</p>
 
@@ -327,6 +343,8 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the last JTable used for displaying user information.</p>
+<dl class="section return"><dt>Returns</dt><dd>The last JTable used for displaying user information. </dd></dl>
 
 </div>
 </div>
@@ -353,11 +371,19 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Retrieves the role of the user with the specified user ID.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">userId</td><td>The ID of the user whose role is to be retrieved. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The role of the user, or null if the user is not found. </dd></dl>
 
 </div>
 </div>
-<a id="a49f849bc4c4208e78753680a4ebd115a" name="a49f849bc4c4208e78753680a4ebd115a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a49f849bc4c4208e78753680a4ebd115a">&#9670;&#160;</a></span>invertSelectedUserRole()</h2>
+<a id="a365791d47fa1ba881740cd694c417b81" name="a365791d47fa1ba881740cd694c417b81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a365791d47fa1ba881740cd694c417b81">&#9670;&#160;</a></span>invertSelectedUserRole()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -366,7 +392,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void controller.AdminController.invertSelectedUserRole </td>
+          <td class="memname">boolean controller.AdminController.invertSelectedUserRole </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>userId</em></td><td>)</td>
@@ -379,6 +405,14 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Inverts the role of the user with the specified user ID. If the current role is "admin", it will be changed to "member" and vice versa.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">userId</td><td>The ID of the user whose role is to be inverted. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the role was successfully inverted, false otherwise. </dd></dl>
 
 </div>
 </div>
@@ -415,6 +449,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Sets the role of the user with the specified user ID.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">userId</td><td>The ID of the user whose role is to be set. </td></tr>
+    <tr><td class="paramname">role</td><td>The new role to be assigned to the user. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the role was successfully updated, false otherwise. </dd></dl>
 
 </div>
 </div>

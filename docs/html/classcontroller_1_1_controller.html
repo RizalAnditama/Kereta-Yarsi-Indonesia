@@ -513,7 +513,7 @@ int userCount = controller.getRowCount("user");
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Executes a specified SQL query.</p>
+<p>Executes a specified SQL query without parameters.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">sql</td><td>the SQL query to execute </td></tr>
@@ -557,6 +557,15 @@ int userCount = controller.getRowCount("user");
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Executes a specified SQL query with parameters.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sql</td><td>the SQL query to execute </td></tr>
+    <tr><td class="paramname">values</td><td>the parameters to set in the query </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a ResultSet containing the results of the query </dd></dl>
 
 </div>
 </div>
@@ -593,6 +602,15 @@ int userCount = controller.getRowCount("user");
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Executes a specified SQL update (INSERT, UPDATE, DELETE) with parameters.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sql</td><td>the SQL update to execute </td></tr>
+    <tr><td class="paramname">values</td><td>the parameters to set in the update </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the update affected at least one row, false otherwise </dd></dl>
 
 </div>
 </div>
