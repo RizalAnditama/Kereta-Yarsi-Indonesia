@@ -14,7 +14,10 @@ import model.User;
 import net.proteanit.sql.DbUtils;
 
 /**
- *
+ * The AdminController class is responsible for managing admin-related operations
+ * such as displaying users, managing user roles, and deleting users.
+ * This class follows the singleton pattern to ensure only one instance is created.
+ * 
  * @author Muhammad Rizal Anditama Nugraha
  */
 public class AdminController extends Controller {
@@ -22,10 +25,20 @@ public class AdminController extends Controller {
     private static AdminController instance;
     private JTable lastTable;
 
+    /**
+     * Private constructor to prevent instantiation.
+     * 
+     * @param databaseConnector The DatabaseConnector instance used for database operations.
+     */
     private AdminController(DatabaseConnector databaseConnector) {
         super(databaseConnector);
     }
 
+    /**
+     * Returns the singleton instance of AdminController.
+     * 
+     * @return The singleton instance of AdminController.
+     */
     public static synchronized AdminController getInstance() {
         if (instance == null) {
             instance = new AdminController(DatabaseConnector.getInstance());
@@ -33,6 +46,11 @@ public class AdminController extends Controller {
         return instance;
     }
 
+    /**
+     * Displays the user information in the given JTable.
+     * 
+     * @param table The JTable to display the user information in.
+     */
     public void display(JTable table) {
         lastTable = table;
         rs = executeQuery("select * from user");
@@ -41,6 +59,12 @@ public class AdminController extends Controller {
         table.setModel(customModel);
     }
 
+    /**
+     * Retrieves the role of the user with the specified user ID.
+     * 
+     * @param userId The ID of the user whose role is to be retrieved.
+     * @return The role of the user, or null if the user is not found.
+     */
     public String getSelectedUserRole(int userId) {
         rs = executeQuery("select * from user where user_id = ?", userId);
 
@@ -55,35 +79,46 @@ public class AdminController extends Controller {
         return null;
     }
 
+    /**
+     * Sets the role of the user with the specified user ID.
+     * 
+     * @param userId The ID of the user whose role is to be set.
+     * @param role The new role to be assigned to the user.
+     * @return True if the role was successfully updated, false otherwise.
+     */
     public boolean setSelectedUserRole(int userId, String role) {
         return executeUpdate("update user set role = ? where user_id = ?", role, userId);
     }
 
+    /**
+     * Inverts the role of the user with the specified user ID.
+     * If the current role is "admin", it will be changed to "member" and vice versa.
+     * 
+     * @param userId The ID of the user whose role is to be inverted.
+     * @return True if the role was successfully inverted, false otherwise.
+     */
     public boolean invertSelectedUserRole(int userId) {
         User userSession = getSession().getUser();
         int id = userSession.getUserID();
-        String username = userSession.getUsername();
-        String password = userSession.getPassword();
-        byte[] salt = userSession.getSalt();
 
         if (id == userId) {
             return false;
         } else {
             String role = getSelectedUserRole(userId);
 
-            String newRole = null;
-            if (role.equalsIgnoreCase("admin")) {
-                newRole = "member";
-            } else {
-                newRole = "admin";
-            }
+            String newRole = role.equalsIgnoreCase("admin") ? "member" : "admin";
             setSelectedUserRole(userId, newRole);
 
-//            getSession().setUser(new User(userId, username, password, salt, newRole));
             return true;
         }
     }
 
+    /**
+     * Deletes the user with the specified user ID.
+     * 
+     * @param userId The ID of the user to be deleted.
+     * @return True if the user was successfully deleted, false otherwise.
+     */
     public boolean deleteUser(int userId) {
         User userSession = getSession().getUser();
         int adminId = userSession.getUserID();
@@ -95,6 +130,11 @@ public class AdminController extends Controller {
         }
     }
 
+    /**
+     * Returns the last JTable used for displaying user information.
+     * 
+     * @return The last JTable used for displaying user information.
+     */
     public JTable getLastTable() {
         return lastTable;
     }

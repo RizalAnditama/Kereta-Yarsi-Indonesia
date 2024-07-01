@@ -29,14 +29,6 @@ import javax.crypto.spec.PBEKeySpec;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.DatabaseConnector;
-import static model.DatabaseConnector.con;
-import static model.DatabaseConnector.getPs;
-import static model.DatabaseConnector.getRs;
-import static model.DatabaseConnector.getSt;
-import static model.DatabaseConnector.ps;
-import static model.DatabaseConnector.setPs;
-import static model.DatabaseConnector.setRs;
-import static model.DatabaseConnector.setSt;
 import model.Train;
 
 /**
@@ -295,7 +287,7 @@ public class Controller {
     }
 
     /**
-     * Executes a specified SQL query.
+     * Executes a specified SQL query without parameters.
      *
      * @param sql the SQL query to execute
      * @return a ResultSet containing the results of the query
@@ -311,6 +303,13 @@ public class Controller {
         return getRs();
     }
 
+    /**
+     * Executes a specified SQL query with parameters.
+     *
+     * @param sql the SQL query to execute
+     * @param values the parameters to set in the query
+     * @return a ResultSet containing the results of the query
+     */
     public ResultSet executeQuery(String sql, Object... values) {
         try {
             ps = con.prepareStatement(sql);
@@ -324,8 +323,15 @@ public class Controller {
 
         return getRs();
     }
-    
-    public boolean executeUpdate(String sql, Object... values){
+
+    /**
+     * Executes a specified SQL update (INSERT, UPDATE, DELETE) with parameters.
+     *
+     * @param sql the SQL update to execute
+     * @param values the parameters to set in the update
+     * @return true if the update affected at least one row, false otherwise
+     */
+    public boolean executeUpdate(String sql, Object... values) {
         int rowsAffected = 0;
         try {
             ps = con.prepareStatement(sql);
@@ -339,7 +345,6 @@ public class Controller {
 
         return rowsAffected > 0;
     }
-    
 
     /**
      * Inserts a new record into a specified table.
