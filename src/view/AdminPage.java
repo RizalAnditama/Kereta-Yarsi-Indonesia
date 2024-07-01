@@ -202,9 +202,12 @@ public class AdminPage extends javax.swing.JFrame {
         if (userId == -1) {
             adminController.infoMessage("Harap pilih baris user dahulu!");
         } else {
-            adminController.invertSelectedUserRole(userId);
+            if (adminController.invertSelectedUserRole(userId)) {
             adminController.infoMessage("Account role inverted!");
             adminController.display(jTable1);
+            } else {
+                adminController.infoMessage("You're an admin, you're not supposed to get outta job like that!");
+            }
         }
     }//GEN-LAST:event_invertRoleButtonActionPerformed
 

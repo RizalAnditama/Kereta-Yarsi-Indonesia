@@ -59,23 +59,29 @@ public class AdminController extends Controller {
         return executeUpdate("update user set role = ? where user_id = ?", role, userId);
     }
 
-    public void invertSelectedUserRole(int userId) {
-        String role = getSelectedUserRole(userId);
-        String newRole = null;
-        if (role.equalsIgnoreCase("admin")) {
-            newRole = "member";
-        } else {
-            newRole = "admin";
-        }
-        setSelectedUserRole(userId, newRole);
-
+    public boolean invertSelectedUserRole(int userId) {
         User userSession = getSession().getUser();
         int id = userSession.getUserID();
         String username = userSession.getUsername();
         String password = userSession.getPassword();
         byte[] salt = userSession.getSalt();
 
-        getSession().setUser(new User(userId, username, password, salt, newRole));
+        if (id == userId) {
+            return false;
+        } else {
+            String role = getSelectedUserRole(userId);
+
+            String newRole = null;
+            if (role.equalsIgnoreCase("admin")) {
+                newRole = "member";
+            } else {
+                newRole = "admin";
+            }
+            setSelectedUserRole(userId, newRole);
+
+//            getSession().setUser(new User(userId, username, password, salt, newRole));
+            return true;
+        }
     }
 
     public boolean deleteUser(int userId) {
