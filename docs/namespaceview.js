@@ -1,6 +1,8 @@
 var namespaceview =
 [
     [ "AddPassengers_KYI", "classview_1_1_add_passengers___k_y_i.html", "classview_1_1_add_passengers___k_y_i" ],
+    [ "AddUserPage", "classview_1_1_add_user_page.html", "classview_1_1_add_user_page" ],
+    [ "AdminPage", "classview_1_1_admin_page.html", "classview_1_1_admin_page" ],
     [ "CheckTicket", "classview_1_1_check_ticket.html", "classview_1_1_check_ticket" ],
     [ "MainMenu_KYI", "classview_1_1_main_menu___k_y_i.html", "classview_1_1_main_menu___k_y_i" ],
     [ "OrderTicket_KYI", "classview_1_1_order_ticket___k_y_i.html", "classview_1_1_order_ticket___k_y_i" ],

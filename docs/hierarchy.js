@@ -1,6 +1,7 @@
 var hierarchy =
 [
     [ "controller.Controller", "classcontroller_1_1_controller.html", [
+      [ "controller.AdminController", "classcontroller_1_1_admin_controller.html", null ],
       [ "controller.PassengerController", "classcontroller_1_1_passenger_controller.html", null ],
       [ "controller.StationController", "classcontroller_1_1_station_controller.html", null ],
       [ "controller.TicketController", "classcontroller_1_1_ticket_controller.html", null ],
@@ -10,6 +11,8 @@ var hierarchy =
     [ "model.DatabaseConnector", "classmodel_1_1_database_connector.html", null ],
     [ "javax.swing.JFrame", null, [
       [ "view.AddPassengers_KYI", "classview_1_1_add_passengers___k_y_i.html", null ],
+      [ "view.AddUserPage", "classview_1_1_add_user_page.html", null ],
+      [ "view.AdminPage", "classview_1_1_admin_page.html", null ],
       [ "view.CheckTicket", "classview_1_1_check_ticket.html", null ],
       [ "view.MainMenu_KYI", "classview_1_1_main_menu___k_y_i.html", null ],
       [ "view.OrderTicket_KYI", "classview_1_1_order_ticket___k_y_i.html", null ],
@@ -48,5 +51,8 @@ var hierarchy =
     ] ],
     [ "model.UserDAO", "interfacemodel_1_1_user_d_a_o.html", [
       [ "controller.UserController", "classcontroller_1_1_user_controller.html", null ]
+    ] ],
+    [ "DefaultTableModel", null, [
+      [ "controller.CustomTableModel", "classcontroller_1_1_custom_table_model.html", null ]
     ] ]
 ];

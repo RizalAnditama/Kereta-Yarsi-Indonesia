@@ -1,6 +1,8 @@
 var dir_b39b5091e8d1d2be4b7fc59d57749634 =
 [
     [ "AddPassengers_KYI.java", "_add_passengers___k_y_i_8java.html", "_add_passengers___k_y_i_8java" ],
+    [ "AddUserPage.java", "_add_user_page_8java.html", "_add_user_page_8java" ],
+    [ "AdminPage.java", "_admin_page_8java.html", "_admin_page_8java" ],
     [ "CheckTicket.java", "_check_ticket_8java.html", "_check_ticket_8java" ],
     [ "MainMenu_KYI.java", "_main_menu___k_y_i_8java.html", "_main_menu___k_y_i_8java" ],
     [ "OrderTicket_KYI.java", "_order_ticket___k_y_i_8java.html", "_order_ticket___k_y_i_8java" ],

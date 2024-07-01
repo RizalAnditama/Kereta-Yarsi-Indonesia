@@ -56,8 +56,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_add_passengers___k_y_i_8java.html",
-"classmodel_1_1_database_connector.html#a729966c1f63a6417e4d8aeb9967df33a",
-"classview_1_1_pick_train_seat.html"
+"classmodel_1_1_passenger.html#a7284b4628726e49bd120fed4147ac428",
+"index.html#doxygen_awesome"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

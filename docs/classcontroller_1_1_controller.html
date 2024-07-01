@@ -106,11 +106,12 @@ Inheritance diagram for controller.Controller:</div>
  <div class="center">
   <img src="classcontroller_1_1_controller.png" usemap="#controller.Controller_map" alt=""/>
   <map id="controller.Controller_map" name="controller.Controller_map">
-<area href="classcontroller_1_1_passenger_controller.html" alt="controller.PassengerController" shape="rect" coords="0,56,186,80"/>
-<area href="classcontroller_1_1_station_controller.html" alt="controller.StationController" shape="rect" coords="196,56,382,80"/>
-<area href="classcontroller_1_1_ticket_controller.html" alt="controller.TicketController" shape="rect" coords="392,56,578,80"/>
-<area href="classcontroller_1_1_train_controller.html" alt="controller.TrainController" shape="rect" coords="588,56,774,80"/>
-<area href="classcontroller_1_1_user_controller.html" alt="controller.UserController" shape="rect" coords="784,56,970,80"/>
+<area href="classcontroller_1_1_admin_controller.html" alt="controller.AdminController" shape="rect" coords="0,56,186,80"/>
+<area href="classcontroller_1_1_passenger_controller.html" alt="controller.PassengerController" shape="rect" coords="196,56,382,80"/>
+<area href="classcontroller_1_1_station_controller.html" alt="controller.StationController" shape="rect" coords="392,56,578,80"/>
+<area href="classcontroller_1_1_ticket_controller.html" alt="controller.TicketController" shape="rect" coords="588,56,774,80"/>
+<area href="classcontroller_1_1_train_controller.html" alt="controller.TrainController" shape="rect" coords="784,56,970,80"/>
+<area href="classcontroller_1_1_user_controller.html" alt="controller.UserController" shape="rect" coords="980,56,1166,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -126,8 +127,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a31289ff7f3f789f28a81e03027e1ad6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d9a11265105d760e21e1df64e341a7a"><td class="memItemLeft" align="right" valign="top">ResultSet&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcontroller_1_1_controller.html#a2d9a11265105d760e21e1df64e341a7a">findWhere</a> (String table, String columnName, Object keyword)</td></tr>
 <tr class="separator:a2d9a11265105d760e21e1df64e341a7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b960299826dfb205a90b0ce896c481d"><td class="memItemLeft" align="right" valign="top">ResultSet&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcontroller_1_1_controller.html#a8b960299826dfb205a90b0ce896c481d">executeQuery</a> (String execute)</td></tr>
-<tr class="separator:a8b960299826dfb205a90b0ce896c481d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a086e2b80747c5d21694bd1f914bed6a8"><td class="memItemLeft" align="right" valign="top">ResultSet&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcontroller_1_1_controller.html#a086e2b80747c5d21694bd1f914bed6a8">executeQuery</a> (String <a class="el" href="classcontroller_1_1_controller.html#a04b5f20102ce0146a2a35fde27dea87a">sql</a>)</td></tr>
+<tr class="separator:a086e2b80747c5d21694bd1f914bed6a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bcab0519527d53247834973a5287967"><td class="memItemLeft" align="right" valign="top">ResultSet&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcontroller_1_1_controller.html#a6bcab0519527d53247834973a5287967">executeQuery</a> (String <a class="el" href="classcontroller_1_1_controller.html#a04b5f20102ce0146a2a35fde27dea87a">sql</a>, Object... values)</td></tr>
+<tr class="separator:a6bcab0519527d53247834973a5287967"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af86e578a8f970e4dae691247527ae3e3"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcontroller_1_1_controller.html#af86e578a8f970e4dae691247527ae3e3">executeUpdate</a> (String <a class="el" href="classcontroller_1_1_controller.html#a04b5f20102ce0146a2a35fde27dea87a">sql</a>, Object... values)</td></tr>
+<tr class="separator:af86e578a8f970e4dae691247527ae3e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3651a50aff3db60c28085b8e4ffc05c7"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcontroller_1_1_controller.html#a3651a50aff3db60c28085b8e4ffc05c7">insert</a> (String table, boolean withID, Object... value)</td></tr>
 <tr class="separator:a3651a50aff3db60c28085b8e4ffc05c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6440a71bb3d83813ffb26ac200c33061"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcontroller_1_1_controller.html#a6440a71bb3d83813ffb26ac200c33061">errorMessage</a> (String title, String message)  throws HeadlessException </td></tr>
@@ -485,8 +490,8 @@ int userCount = controller.getRowCount("user");
 
 </div>
 </div>
-<a id="a8b960299826dfb205a90b0ce896c481d" name="a8b960299826dfb205a90b0ce896c481d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8b960299826dfb205a90b0ce896c481d">&#9670;&#160;</a></span>executeQuery()</h2>
+<a id="a086e2b80747c5d21694bd1f914bed6a8" name="a086e2b80747c5d21694bd1f914bed6a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a086e2b80747c5d21694bd1f914bed6a8">&#9670;&#160;</a></span>executeQuery() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -498,7 +503,7 @@ int userCount = controller.getRowCount("user");
           <td class="memname">ResultSet controller.Controller.executeQuery </td>
           <td>(</td>
           <td class="paramtype">String&#160;</td>
-          <td class="paramname"><em>execute</em></td><td>)</td>
+          <td class="paramname"><em>sql</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -508,14 +513,104 @@ int userCount = controller.getRowCount("user");
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Executes a specified SQL query.</p>
+<p>Executes a specified SQL query without parameters.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">execute</td><td>the SQL query to execute </td></tr>
+    <tr><td class="paramname">sql</td><td>the SQL query to execute </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a ResultSet containing the results of the query </dd></dl>
+
+</div>
+</div>
+<a id="a6bcab0519527d53247834973a5287967" name="a6bcab0519527d53247834973a5287967"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bcab0519527d53247834973a5287967">&#9670;&#160;</a></span>executeQuery() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ResultSet controller.Controller.executeQuery </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>sql</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Object...&#160;</td>
+          <td class="paramname"><em>values</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Executes a specified SQL query with parameters.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sql</td><td>the SQL query to execute </td></tr>
+    <tr><td class="paramname">values</td><td>the parameters to set in the query </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a ResultSet containing the results of the query </dd></dl>
+
+</div>
+</div>
+<a id="af86e578a8f970e4dae691247527ae3e3" name="af86e578a8f970e4dae691247527ae3e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af86e578a8f970e4dae691247527ae3e3">&#9670;&#160;</a></span>executeUpdate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean controller.Controller.executeUpdate </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>sql</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Object...&#160;</td>
+          <td class="paramname"><em>values</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Executes a specified SQL update (INSERT, UPDATE, DELETE) with parameters.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sql</td><td>the SQL update to execute </td></tr>
+    <tr><td class="paramname">values</td><td>the parameters to set in the update </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the update affected at least one row, false otherwise </dd></dl>
 
 </div>
 </div>
@@ -818,7 +913,7 @@ int userCount = controller.getRowCount("user");
 <p>Returns the singleton instance of the Controller.</p>
 <dl class="section return"><dt>Returns</dt><dd>the singleton instance </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classcontroller_1_1_passenger_controller.html#a5160c100c3e9e0f75c1981737fd1862d">controller.PassengerController</a>, <a class="el" href="classcontroller_1_1_station_controller.html#afb56636a254b3fd2eab72e55fcaeb653">controller.StationController</a>, <a class="el" href="classcontroller_1_1_ticket_controller.html#a2fd9ee989e759ee9b17f5091907a66b3">controller.TicketController</a>, <a class="el" href="classcontroller_1_1_train_controller.html#ab94507cf9d33a475fe87faa6ced3394c">controller.TrainController</a>, and <a class="el" href="classcontroller_1_1_user_controller.html#a89c05c072063e9dc03129c3f16a27066">controller.UserController</a>.</p>
+<p>Reimplemented in <a class="el" href="classcontroller_1_1_admin_controller.html#a3aa6353dea9ed988e61ab59985ae707a">controller.AdminController</a>, <a class="el" href="classcontroller_1_1_passenger_controller.html#a5160c100c3e9e0f75c1981737fd1862d">controller.PassengerController</a>, <a class="el" href="classcontroller_1_1_station_controller.html#afb56636a254b3fd2eab72e55fcaeb653">controller.StationController</a>, <a class="el" href="classcontroller_1_1_ticket_controller.html#a2fd9ee989e759ee9b17f5091907a66b3">controller.TicketController</a>, <a class="el" href="classcontroller_1_1_train_controller.html#ab94507cf9d33a475fe87faa6ced3394c">controller.TrainController</a>, and <a class="el" href="classcontroller_1_1_user_controller.html#a89c05c072063e9dc03129c3f16a27066">controller.UserController</a>.</p>
 
 </div>
 </div>
