@@ -61,7 +61,6 @@ public class AdminPage extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         invertRoleButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         addUserButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -114,8 +113,6 @@ public class AdminPage extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("jLabel3");
-
         addUserButton.setText("Add User");
         addUserButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,8 +133,7 @@ public class AdminPage extends javax.swing.JFrame {
                         .addGap(26, 26, 26)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(50, 50, 50)
+                                .addGap(87, 87, 87)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,9 +162,7 @@ public class AdminPage extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(invertRoleButton)
                         .addGap(18, 18, 18)
-                        .addComponent(deleteButton)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel3)))
+                        .addComponent(deleteButton)))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
@@ -280,7 +274,6 @@ public class AdminPage extends javax.swing.JFrame {
     private javax.swing.JButton invertRoleButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

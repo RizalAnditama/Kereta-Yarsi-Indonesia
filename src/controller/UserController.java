@@ -76,7 +76,7 @@ public class UserController extends Controller implements UserDAO {
         try {
             PreparedStatement ps = DatabaseConnector.getConnect().prepareStatement(query);
             ps.setString(1, user.getUsername());
-            ps.setString(2, DatabaseConnector.encryptPBKDF2(user.getPassword(), user.getSalt()));
+            ps.setString(2, encryptPBKDF2(user.getPassword(), user.getSalt()));
             ps.setBytes(3, user.getSalt());
             ps.setString(4, user.getRole());
             return ps.executeUpdate() > 0;
@@ -156,7 +156,7 @@ public class UserController extends Controller implements UserDAO {
         try {
             PreparedStatement ps = DatabaseConnector.getConnect().prepareStatement(query);
             ps.setString(1, user.getUsername());
-            ps.setString(2, DatabaseConnector.encryptPBKDF2(user.getPassword(), user.getSalt()));
+            ps.setString(2, encryptPBKDF2(user.getPassword(), user.getSalt()));
             ps.setBytes(3, user.getSalt());
             ps.setString(4, user.getRole());
             ps.setInt(5, user.getUserID());
@@ -208,10 +208,10 @@ public class UserController extends Controller implements UserDAO {
     public boolean login(String username, String password) {
         User user = getUserByUsername(username);
         if (user == null) {
-            databaseConnector.infoMessage("Username not found!");
+            infoMessage("Username not found!");
             return false;
-        } else if (!DatabaseConnector.verifyPassword(password, user.getPassword(), user.getSalt())) {
-            databaseConnector.infoMessage("Wrong password!");
+        } else if (!verifyPassword(password, user.getPassword(), user.getSalt())) {
+            infoMessage("Wrong password!");
             return false;
         }
         session.setUser(user);
@@ -249,7 +249,7 @@ public class UserController extends Controller implements UserDAO {
     public boolean register(String username, String password) {
         SecureRandom random = new SecureRandom();
         int saltValue = random.nextInt(100);
-        byte[] salt = DatabaseConnector.generateSalt(saltValue);
+        byte[] salt = generateSalt(saltValue);
         User newUser = new User(-1, username, password, salt); // Assuming -1 means the ID is auto-generated
         return register(newUser);
     }
